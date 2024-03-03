@@ -23,7 +23,7 @@ function getComputerChoice(){
 
 
 // Plays a single round 
-function singleRound(playerSelection, computerSelection){
+function playRound(playerSelection, computerSelection){
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
 
@@ -62,4 +62,31 @@ function singleRound(playerSelection, computerSelection){
     }
 }
 
-// console.log(getComputerChoice());
+function playGame(){
+    let counter = 0;
+    let playerWinCount = 0;
+    let computerWinCount = 0;
+    console.log("[Rock, Paper, Scissors]");
+    while(counter !== 5){
+        counter++;
+        let choice = prompt("Enter Your Choice: ");
+        let result = playRound(choice,getComputerChoice());
+        console.log(result);
+        if(result.includes(playerWins))
+            playerWinCount++;
+        else if(result.includes(playerLoses))
+            computerWinCount++;
+    }
+    if(playerWinCount > computerWinCount)
+        console.log("YAY!!!    You Won the Game.");
+    else if(computerWinCount > playerWinCount)
+        console.log("Bad Luck! You Lost the Game Try again next time.");
+    else
+    console.log("Oops! It is a Tie.");
+}
+
+playGame();
+
+// const playerSelection = "rock";
+// const computerSelection = getComputerChoice();
+// console.log(playRound(playerSelection, computerSelection));
